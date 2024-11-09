@@ -1,15 +1,19 @@
-﻿namespace GymManagementSystem.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GymManagementSystem.Entities
 {
     public class User
     {
-        public string UserId { get; set; }
+        [Key]
+        public string Id { get; set; }
         public string PassWord { get; set; }
         public Roles Roles { get; set; }
+        public Member? member { get; set; }
     }
 
     public enum Roles
     {
         Admin,
-        member
+        Member
     }
 }

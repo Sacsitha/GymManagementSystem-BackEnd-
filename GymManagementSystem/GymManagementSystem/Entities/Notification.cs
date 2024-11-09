@@ -1,12 +1,15 @@
-﻿namespace GymManagementSystem.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GymManagementSystem.Entities
 {
     public class Notification
     {
-        public Guid NId { get; set; }
+        [Key]
+        public Guid Id { get; set; }
         public string Message { get; set; } 
         public Priority Priority {  get; set; }
-        public Guid MemberId { get; set; }
-        public ICollection<User> Users { get; set; }
+        public Guid? MemberId { get; set; }
+        public Member? member { get; set; }
     }
     public enum Priority
     {
