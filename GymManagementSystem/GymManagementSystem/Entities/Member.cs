@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace GymManagementSystem.Entities
+﻿namespace GymManagementSystem.Entities
 {
     public class Member
     {
-        [Key]
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,14 +16,14 @@ namespace GymManagementSystem.Entities
         public bool MemberStatus { get; set; }
         public string Address { get; set; }
         public string NicNo { get; set; }
-        public string? UserId { get; set; }
-        public User? User { get; set; }
-        public ICollection<Notification>? Notifications { get; set; }
-        public ICollection<Payment>? Payments { get; set; }
-        public ICollection<Review>? Reviews { get; set; }
-        public ICollection<SkippedPayment>? SkippedPayments { get; set; }
-        public ICollection<MemberMessage>? MemberMessages { get; set; }
-        //public ICollection<Enrollment>? Enrollments { get; set; }
+        public string UserId { get; set; }
+        public User User { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
+        public ICollection<Payment> Payments { get; set; }
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<SkippedPayment> SkippedPayments { get; set; }
+        public ICollection<MemberMessage> MemberMessages { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
 
     }
 }

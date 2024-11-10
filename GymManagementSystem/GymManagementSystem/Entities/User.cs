@@ -8,7 +8,7 @@ namespace GymManagementSystem.Entities
         public string Id { get; set; }
         public string PassWord { get; set; }
         public Roles Roles { get; set; }
-        public Member? member { get; set; }
+        public Member? Member { get; set; }
     }
 
     public enum Roles
