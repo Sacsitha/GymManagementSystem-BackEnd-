@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Migrations\\20241110073905_Entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GymManagementSystem\\Migrations\\20241110073905_Entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\adminmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\adminmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\workoutprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\workoutprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\membermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\membermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\dbcontext\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\dbcontext\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\adminmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\adminmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\migrations\\20241110073905_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\migrations\\20241110073905_entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\membermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\membermessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,16 +63,8 @@
       "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|x:\\milestone 3\\gymmanagementsystem-backend-\\gymmanagementsystem\\gymmanagementsystem\\dbcontext\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4E83364E-9815-4184-A75B-C3CA3FAA9383}|GymManagementSystem\\GymManagementSystem.csproj|solutionrelative:gymmanagementsystem\\dbcontext\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,24 +74,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "20241110073905_Entities.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Migrations\\20241110073905_Entities.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Migrations\\20241110073905_Entities.cs",
               "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Migrations\\20241110073905_Entities.cs",
               "RelativeToolTip": "GymManagementSystem\\Migrations\\20241110073905_Entities.cs",
-              "ViewState": "AQIAAIgAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAgwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-10T07:39:05.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProgramImages.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\ProgramImages.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\ProgramImages.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\ProgramImages.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\ProgramImages.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:12:41.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Payment.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Payment.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Payment.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\Payment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:12:29.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Notification.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Notification.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:12:19.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MemberMessage.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\MemberMessage.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\MemberMessage.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\MemberMessage.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\MemberMessage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:09:02.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Enrollment.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Enrollment.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Enrollment.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Enrollment.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\Enrollment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:11:40.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\DBContext\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\DBContext\\AppDbContext.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\DBContext\\AppDbContext.cs",
+              "RelativeToolTip": "GymManagementSystem\\DBContext\\AppDbContext.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAUwC4AAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:06:58.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Member.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Member.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Member.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Member.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\Member.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBIAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T07:08:22.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AdminMessage.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\AdminMessage.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\AdminMessage.cs",
@@ -104,32 +190,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\User.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\User.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAbAAAA",
+              "DocumentIndex": 1,
+              "Title": "WorkoutProgram.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\WorkoutProgram.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\WorkoutProgram.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\WorkoutProgram.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\WorkoutProgram.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAiwBAAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:31:14.444Z",
+              "WhenOpened": "2024-11-10T07:10:48.93Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Subscription.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Subscription.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Subscription.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Subscription.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\Subscription.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:13:02.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ProgramPayment.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\ProgramPayment.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\ProgramPayment.cs",
@@ -141,52 +215,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProgramImages.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\ProgramImages.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\ProgramImages.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\ProgramImages.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\ProgramImages.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAATAAAA",
+              "DocumentIndex": 9,
+              "Title": "Subscription.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Subscription.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Subscription.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Subscription.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\Subscription.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:12:41.408Z"
+              "WhenOpened": "2024-11-10T07:13:02.231Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Payment.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Payment.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Payment.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\Payment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAdAAAA",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\User.cs",
+              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\User.cs",
+              "RelativeToolTip": "GymManagementSystem\\Entities\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:12:29.642Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Notification.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Notification.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Notification.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\Notification.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:12:19.229Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MemberMessage.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\MemberMessage.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\MemberMessage.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\MemberMessage.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\MemberMessage.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:09:02.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-10T07:31:14.444Z"
             },
             {
               "$type": "Bookmark",
@@ -194,32 +243,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Enrollment.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Enrollment.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Enrollment.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Enrollment.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\Enrollment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:11:40.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WorkoutProgram.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\WorkoutProgram.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\WorkoutProgram.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\WorkoutProgram.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\WorkoutProgram.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:10:48.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "SubscriptionPayment.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\SubscriptionPayment.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\SubscriptionPayment.cs",
@@ -231,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SkippedPayment.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\SkippedPayment.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\SkippedPayment.cs",
@@ -243,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Review.cs",
               "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Review.cs",
               "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Review.cs",
@@ -252,30 +276,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-10T07:09:15.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Member.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Member.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\Entities\\Member.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\Entities\\Member.cs",
-              "RelativeToolTip": "GymManagementSystem\\Entities\\Member.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBEAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:08:22.976Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\DBContext\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "GymManagementSystem\\DBContext\\AppDbContext.cs",
-              "ToolTip": "X:\\Milestone 3\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\DBContext\\AppDbContext.cs",
-              "RelativeToolTip": "GymManagementSystem\\DBContext\\AppDbContext.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwA4AAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-10T07:06:58.707Z"
             }
           ]
         }

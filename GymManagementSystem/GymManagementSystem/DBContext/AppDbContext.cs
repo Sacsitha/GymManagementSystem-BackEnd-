@@ -25,7 +25,7 @@ namespace GymManagementSystem.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Member
-            //modelBuilder.Entity<Member>().HasOne(a => a.User).WithOne(u => u.member).HasForeignKey<Member>(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Member>().HasOne(a => a.User).WithOne(u => u.Member).HasForeignKey<Member>(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
             //modelBuilder.Entity<Member>().HasMany(a => a.SkippedPayments).WithOne(u => u.member).HasForeignKey(u => u.MemberId);
             //modelBuilder.Entity<Member>().HasMany(a => a.Notifications).WithOne(u => u.member).HasForeignKey(u => u.MemberId);
             //modelBuilder.Entity<Member>().HasMany(a => a.Payments).WithOne(u => u.member).HasForeignKey(u => u.MemberId);
@@ -45,15 +45,6 @@ namespace GymManagementSystem.DBContext
             //modelBuilder.Entity<Subscription>().HasMany(a => a.SubscriptionPayments).WithOne(u => u.Programs).HasForeignKey(u => u.SubscriptionId);
 
             modelBuilder.Entity<Enrollment>().HasKey(e => new { e.MemberId, e.ProgramId });
-
-
-
-
-
-
-
-
-
             base.OnModelCreating(modelBuilder);
         }
     }
