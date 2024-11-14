@@ -21,6 +21,8 @@ namespace GymManagementSystem.DBContext
         public DbSet<ProgramPayment> ProgramPayments { get; set; }
         public DbSet<SubscriptionPayment> SubscriptionPayments { get; set; }
         public DbSet<ProgramImages> ProgramImages { get; set; }
+        public DbSet<RefundPayment> RefundPayments { get; set; }
+        public DbSet<VisitorMessage> VisitorMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

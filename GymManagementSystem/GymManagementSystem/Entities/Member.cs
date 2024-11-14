@@ -18,12 +18,12 @@
         public string NicNo { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
-        public ICollection<Notification> Notifications { get; set; }
-        public ICollection<Payment> Payments { get; set; }
-        public ICollection<Review> Reviews { get; set; }
-        public ICollection<SkippedPayment> SkippedPayments { get; set; }
-        public ICollection<MemberMessage> MemberMessages { get; set; }
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Notification>? Notifications { get; set; }
+        public ICollection<Payment>? Payments { get; set; }
+        public ICollection<Review>? Reviews { get; set; }
+        public ICollection<SkippedPayment>? SkippedPayments { get; set; }
+        public ICollection<MemberMessage>? MemberMessages { get; set; }
+        public ICollection<Enrollment>? Enrollments { get; set; }
 
     }
 }

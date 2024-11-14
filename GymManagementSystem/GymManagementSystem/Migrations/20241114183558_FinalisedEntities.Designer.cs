@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241110073905_Entities")]
-    partial class Entities
+    [Migration("20241114183558_FinalisedEntities")]
+    partial class FinalisedEntities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,6 +207,10 @@ namespace GymManagementSystem.Migrations
                     b.Property<Guid>("ProgramId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("alternative")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProgramId");
@@ -239,6 +243,32 @@ namespace GymManagementSystem.Migrations
                     b.HasIndex("SubscriptionPaymentId");
 
                     b.ToTable("ProgramPayments");
+                });
+
+            modelBuilder.Entity("GymManagementSystem.Entities.RefundPayment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MemberId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("RefundPayments");
                 });
 
             modelBuilder.Entity("GymManagementSystem.Entities.Review", b =>
@@ -308,9 +338,15 @@ namespace GymManagementSystem.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsSpecialOffer")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -323,12 +359,18 @@ namespace GymManagementSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("PaymentDate")
+                        .HasColumnType("int");
+
                     b.Property<string>("PaymentType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("SubscriptionId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("UserCanPay")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -352,6 +394,29 @@ namespace GymManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("GymManagementSystem.Entities.VisitorMessage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("VisitorMessages");
                 });
 
             modelBuilder.Entity("GymManagementSystem.Entities.WorkoutProgram", b =>
@@ -501,6 +566,17 @@ namespace GymManagementSystem.Migrations
                     b.Navigation("Program");
 
                     b.Navigation("SubscriptionPayment");
+                });
+
+            modelBuilder.Entity("GymManagementSystem.Entities.RefundPayment", b =>
+                {
+                    b.HasOne("GymManagementSystem.Entities.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("GymManagementSystem.Entities.Review", b =>

@@ -1,5 +1,9 @@
 
 using GymManagementSystem.DBContext;
+using GymManagementSystem.IRepositories;
+using GymManagementSystem.IServices;
+using GymManagementSystem.Repositories;
+using GymManagementSystem.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +22,10 @@ namespace GymManagementSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+
+            builder.Services.AddScoped<IUserService,UserService>();
+            builder.Services.AddScoped<IUserRepository,UserRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
