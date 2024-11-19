@@ -11,6 +11,7 @@ namespace GymManagementSystem.Entities
         public string Description { get; set; }
         [Required]
         public int Duration { get; set; }
+        public DateTime Date { get; set; }
         public bool IsSpecialOffer { get; set; }
         public bool Status { get; set; }
         public ICollection<WorkoutProgram>? Programs { get; set; }

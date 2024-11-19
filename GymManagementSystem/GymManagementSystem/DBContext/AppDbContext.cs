@@ -23,6 +23,8 @@ namespace GymManagementSystem.DBContext
         public DbSet<ProgramImages> ProgramImages { get; set; }
         public DbSet<RefundPayment> RefundPayments { get; set; }
         public DbSet<VisitorMessage> VisitorMessages { get; set; }
+        public DbSet<AdminMessage> AdminMessages { get; set; }
+        public DbSet<SubscribedProgram> SubscribedPrograms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +49,7 @@ namespace GymManagementSystem.DBContext
             //modelBuilder.Entity<Subscription>().HasMany(a => a.SubscriptionPayments).WithOne(u => u.Programs).HasForeignKey(u => u.SubscriptionId);
 
             modelBuilder.Entity<Enrollment>().HasKey(e => new { e.MemberId, e.ProgramId });
+            modelBuilder.Entity<SubscribedProgram>().HasKey(e => new { e.SubscribeId, e.ProgramId });
             base.OnModelCreating(modelBuilder);
         }
     }

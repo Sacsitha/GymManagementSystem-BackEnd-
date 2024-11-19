@@ -2,7 +2,7 @@
 
 namespace GymManagementSystem.DTO.Response_DTO
 {
-    public class ViewProgramListDTO
+    public class ProgramResponseDTO
     {
         public Guid Id { get; set; }
         [Required]
@@ -10,6 +10,6 @@ namespace GymManagementSystem.DTO.Response_DTO
         [Required]
         public string Description { get; set; }
         public List<ProgramImageResponseDTO>? Images { get; set; }
-        public List<ProgramSubscriptionResponseDTO>? Subscriptions { get; set; }
+        public List<SubscriptionResponseDTO>? Subscriptions { get; set; }
     }
 }

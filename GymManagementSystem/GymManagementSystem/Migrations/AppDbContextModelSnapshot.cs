@@ -102,7 +102,6 @@ namespace GymManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Weight")
@@ -112,7 +111,8 @@ namespace GymManagementSystem.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Members");
                 });
@@ -385,6 +385,10 @@ namespace GymManagementSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProfileImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Roles")
                         .HasColumnType("int");
 
@@ -487,9 +491,7 @@ namespace GymManagementSystem.Migrations
                 {
                     b.HasOne("GymManagementSystem.Entities.User", "User")
                         .WithOne("Member")
-                        .HasForeignKey("GymManagementSystem.Entities.Member", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GymManagementSystem.Entities.Member", "UserId");
 
                     b.Navigation("User");
                 });

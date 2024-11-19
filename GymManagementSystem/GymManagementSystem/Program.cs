@@ -14,6 +14,13 @@ namespace GymManagementSystem
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+            });
+
+
 
             // Add services to the container.
 
@@ -25,6 +32,11 @@ namespace GymManagementSystem
 
             builder.Services.AddScoped<IUserService,UserService>();
             builder.Services.AddScoped<IUserRepository,UserRepository>();
+            builder.Services.AddScoped<IProgramRepository,ProgramRepository>();
+            builder.Services.AddScoped<IProgramService,ProgramService>();
+
+            builder.Services.AddScoped<IMemberRepository,MemberRepository>();
+            builder.Services.AddScoped<IMemberService,MemberService>();
 
             var app = builder.Build();
 

@@ -12,6 +12,5 @@ namespace GymManagementSystem.DTO.Response_DTO
         public int Duration { get; set; }
         public bool IsSpecialOffer { get; set; }
         public bool IsNewSubscription { get; set; }
-        public List<ProgramPaymentResponseDTO>? PaymentPayment { get; set; }
     }
 }
