@@ -19,23 +19,22 @@ namespace GymManagementSystem.Repositories
             _context.SaveChanges();
             return data.Entity;
         }
-        //public async Task<List<Member>> GetAllMembers()
-        //{
-        //    var data = await _context.Members.Include(m => m.User).Where(i => i.MemberStatus == true).ToListAsync();
-        //    return data;
-        //}
-        public async Task<List<Member>> GetAllMembers()
+
+        public List<Member> GetAllMembers()
         {
-            var data = await _context.Members
-                .Include(m => m.User) // Including the User details for the member
-                .Where(i => i.MemberStatus == true) // Filter active members
-                .ToListAsync();
+            var data =  _context.Members
+                .Include(m => m.User) 
+                .Where(i => i.MemberStatus == true) 
+                .ToList();
 
             return data;
         }
-        public async Task<Member> GetMember(Guid id)
+        public Member GetMember(Guid id)
         {
-            var data = await _context.Members.Include(m => m.User).Where(i => i.MemberStatus == true).FirstOrDefaultAsync(i => i.Id == id);
+            var data =  _context.Members
+                .Include(m => m.User)
+                .Where(i => i.MemberStatus == true)
+                .FirstOrDefault(i => i.Id == id);
             if (data == null)
             {
                 throw new Exception("Member is not found");
@@ -43,10 +42,10 @@ namespace GymManagementSystem.Repositories
             return data;
         }
         //Member update and delete (soft delete)
-        public async Task<Member> UpdateMember(Member member)
+        public Member UpdateMember(Member member)
         {
             var data = _context.Members.Update(member);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
             return data.Entity;
         }
         public void DeleteMember(Member member)
@@ -56,47 +55,52 @@ namespace GymManagementSystem.Repositories
         }
 
         //Enrollment
-        public async Task<Enrollment> CreateEnrollment(Enrollment enrollment)
+        public  Enrollment CreateEnrollment(Enrollment enrollment)
         {
             var data = _context.Enrollments.Add(enrollment);
             _context.SaveChanges();
             return data.Entity;
         }
-        public async Task<Enrollment> GetEnrollments(Guid memberId,Guid programId)
+        public Enrollment GetEnrollments(Guid memberId,Guid programId)
         {
-            var data = await _context.Enrollments.Where(i => i.MemberId == memberId).FirstOrDefaultAsync(j=>j.ProgramId==programId);
+            var data =  _context.Enrollments.Where(i => i.MemberId == memberId).FirstOrDefault(j=>j.ProgramId==programId);
             return data;
         }
-        public async Task<List<Enrollment>> GetMemberEnrollments(Guid Id)
+        public List<Enrollment> GetMemberEnrollments(Guid Id)
         {
-            var data = await _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.MemberId == Id).ToListAsync();
+            var data =  _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.MemberId == Id).ToList();
             return data;
         }
-        public async Task<List<Enrollment>> GetAllProgramEnrollments(Guid Id)
+        public async Task<List<Enrollment>> GetOverDueEnrollments()
         {
-            var data = await _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.ProgramId == Id).ToListAsync();
+            var data = await _context.Enrollments.Include(i => i.Member).Include(j => j.Program).Include(k=>k.Subscription).Where(x => x.NextDueDate < DateTime.Now).ToListAsync();
             return data;
         }
-        public async Task<List<Enrollment>> GetAllEnrollment()
+        public List<Enrollment> GetAllProgramEnrollments(Guid Id)
         {
-            var data = await _context.Enrollments.Include(i => i.Program).Include(p => p.Member).ToListAsync();
+            var data =  _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.ProgramId == Id).ToList();
             return data;
         }
-        public async Task<Enrollment> UpdateEnrollment(Enrollment enrollment)
+        public List<Enrollment> GetAllEnrollment()
+        {
+            var data =  _context.Enrollments.Include(i => i.Program).Include(p => p.Member).ToList();
+            return data;
+        }
+        public Enrollment UpdateEnrollment(Enrollment enrollment)
         {
             var data = _context.Enrollments.Update(enrollment);
             return data.Entity;
         }
-        public async Task<List<WorkoutProgram>> NotEnrolledPrograms(List<Guid>? excludeProgramIds)
+        public List<WorkoutProgram> NotEnrolledPrograms(List<Guid>? excludeProgramIds)
         {
             if (excludeProgramIds == null || !excludeProgramIds.Any())
             {
-                return await _context.WorkoutPrograms.ToListAsync();
+                return  _context.WorkoutPrograms.ToList();
             }
 
-            var data = await _context.WorkoutPrograms
+            var data =  _context.WorkoutPrograms
                 .Where(p => !excludeProgramIds.Contains(p.Id))
-                .ToListAsync();
+                .ToList();
 
             return data;
         }

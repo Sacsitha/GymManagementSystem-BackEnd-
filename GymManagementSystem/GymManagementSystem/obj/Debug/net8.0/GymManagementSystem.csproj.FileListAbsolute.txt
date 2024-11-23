@@ -469,6 +469,7 @@ C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-20
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\GymManagementSystem.pdb
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\BCrypt.Net.dll
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Humanizer.dll
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -603,3 +604,4 @@ C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-20
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\obj\Debug\net8.0\GymManagementSystem.pdb
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\obj\Debug\net8.0\GymManagementSystem.genruntimeconfig.cache
 C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\obj\Debug\net8.0\ref\GymManagementSystem.dll
+C:\Users\mumar\OneDrive\Desktop\MileStone 3\GymManagementSystem-BackEnd-15-11-2024\GymManagementSystem-BackEnd-\GymManagementSystem\GymManagementSystem\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -12,18 +12,21 @@ namespace GymManagementSystem.Services
     {
         private readonly IMemberRepository _memberRepository;
         private readonly IProgramRepository _programRepository;
+        private readonly IConfiguration _configuration;
 
-        public MemberService(IMemberRepository memberRepository, IProgramRepository programRepository)
+
+        public MemberService(IMemberRepository memberRepository, IProgramRepository programRepository , IConfiguration configuration)
         {
             _memberRepository = memberRepository;
             _programRepository = programRepository;
+            _configuration = configuration;
         }
         public async Task<string> CreateAdmin(AdminRequestDTO adminRequestDTO)
         {
             User admin = new User()
             {
                 Id = adminRequestDTO.Id,
-                Password = adminRequestDTO.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(adminRequestDTO.Password),
                 ProfileImage = adminRequestDTO.ProfileImage,
                 Roles = Roles.Admin
             };
@@ -39,10 +42,11 @@ namespace GymManagementSystem.Services
         }
         public async Task<string> CreateMember(MemberRequestDTO memberRequestDTO)
         {
+            var password = memberRequestDTO.FirstName + memberRequestDTO.Age + memberRequestDTO.Height;
             var newUser = new User()
             {
                 Id = memberRequestDTO.UserId,
-                Password = memberRequestDTO.FirstName + memberRequestDTO.Age + memberRequestDTO.Height,
+                Password = BCrypt.Net.BCrypt.HashPassword(password),
                 ProfileImage = memberRequestDTO.ProfileImage,
                 Roles = Roles.Member,
                 Member = new Member()
@@ -72,41 +76,41 @@ namespace GymManagementSystem.Services
                 return "Please try again";
             }
         }
-        //public async Task<List<MemberResponseDTO>> GetAllMemberDetails()
-        //{
-        //    var data = await _memberRepository.GetAllMembers();
-        //    var memberResponseList = new List<MemberResponseDTO>();
-        //    foreach (var member in data)
-        //    {
-        //        var memberResponseDTO = new MemberResponseDTO()
-        //        {
-        //            Id = member.Id,
-        //            FirstName = member.FirstName,
-        //            LastName = member.LastName,
-        //            Email = member.Email,
-        //            DOB = member.DOB,
-        //            ContactNo = member.ContactNo,
-        //            Address = member.Address,
-        //            Age = member.Age,
-        //            Height = member.Height,
-        //            Weight = member.Weight,
-        //            Gender = member.Gender,
-        //            NicNo = member.NicNo,
-        //            UserId = member.UserId,
-        //            ProfileImage = member.User?.ProfileImage
-        //        };
-        //        memberResponseList.Add(memberResponseDTO);
-        //    }
-        //    return memberResponseList;
-        //}
-        public async Task<List<Member>> GetAllMemberDetails()
+        public async Task<List<MemberResponseDTO>> GetAllMemberDetails()
         {
-            var data = await _memberRepository.GetAllMembers();
-            return data;
+            var data =  _memberRepository.GetAllMembers();
+            var memberResponseList = new List<MemberResponseDTO>();
+            foreach (var member in data)
+            {
+                var memberResponseDTO = new MemberResponseDTO()
+                {
+                    Id = member.Id,
+                    FirstName = member.FirstName,
+                    LastName = member.LastName,
+                    Email = member.Email,
+                    DOB = member.DOB,
+                    ContactNo = member.ContactNo,
+                    Address = member.Address,
+                    Age = member.Age,
+                    Height = member.Height,
+                    Weight = member.Weight,
+                    Gender = member.Gender,
+                    NicNo = member.NicNo,
+                    UserId = member.UserId,
+                    ProfileImage = member.User?.ProfileImage
+                };
+                memberResponseList.Add(memberResponseDTO);
+            }
+            return memberResponseList;
         }
+
         public async Task<MemberResponseDTO> GetSingleMember(Guid id)
         {
-            var data = await _memberRepository.GetMember(id);
+            var data = _memberRepository.GetMember(id);
+            if (data == null)
+            {
+                throw new Exception("Member not found");
+            }
             var memberResponseDTO = new MemberResponseDTO()
             {
                 Id = data.Id,
@@ -128,7 +132,7 @@ namespace GymManagementSystem.Services
         }
         public async Task<string> UpdateMember(Guid Id, MemberRequestDTO memberRequestDTO)
         {
-            var data = await _memberRepository.GetMember(Id);
+            var data =  _memberRepository.GetMember(Id);
 
             data.FirstName = memberRequestDTO.FirstName;
             data.LastName = memberRequestDTO.LastName;
@@ -142,7 +146,7 @@ namespace GymManagementSystem.Services
             data.Gender = memberRequestDTO.Gender;
             data.NicNo = memberRequestDTO.NicNo;
             data.User.ProfileImage = memberRequestDTO.ProfileImage;
-            var updateMember = await _memberRepository.UpdateMember(data);
+            var updateMember =  _memberRepository.UpdateMember(data);
             if (updateMember is Member)
             {
                 return "Member Updated Successfully";
@@ -154,9 +158,9 @@ namespace GymManagementSystem.Services
         }
         public async Task<string> DeleteMember(Guid Id)
         {
-            var data = await _memberRepository.GetMember(Id);
+            var data =  _memberRepository.GetMember(Id);
             data.MemberStatus = false;
-            var deleteMember = await _memberRepository.UpdateMember(data);
+            var deleteMember =  _memberRepository.UpdateMember(data);
             if (deleteMember is Member)
             {
                 return "Member is deleted Successfully";
@@ -166,24 +170,45 @@ namespace GymManagementSystem.Services
                 return "Please try again";
             }
         }
+        public async Task<string> AddEnrollment(EnrollmentRequestDTO enrollmentRequest)
+        {
+            var subscription =  _programRepository.GetSubscription(enrollmentRequest.SubscriptionId);
+            Enrollment enrollment = new Enrollment()
+            {
+                MemberId = enrollmentRequest.MemberId,
+                ProgramId = enrollmentRequest.ProgramId,
+                SubscriptionId = enrollmentRequest.SubscriptionId,
+                EnrolledDate = DateTime.Now,
+                NextDueDate = DateTime.Now.AddMonths(subscription.Duration)
+            };
+            var data=  _memberRepository.CreateEnrollment(enrollment);
+            if (data is Enrollment)
+            {
+                return "Enrollment Added Successfully";
+            }
+            else
+            {
+                return "Please Try Again";
+            }
+        }
         public async Task<List<EnrolledProgramResponseDTO>> GetMemberEnrolledPrograms(Guid id)
         {
             List<EnrolledProgramResponseDTO> enrolledProgramList= new List<EnrolledProgramResponseDTO>();
-            var memberEnrollment = await _memberRepository.GetMemberEnrollments(id);
+            var memberEnrollment =  _memberRepository.GetMemberEnrollments(id);
             foreach (var enrollment in memberEnrollment)
             {
-                var programPaymentList = await GetProgramPayments(enrollment.SubscriptionId, enrollment.ProgramId);
-                var subscription = await _programRepository.GetSubscription(enrollment.SubscriptionId);
+                var programPaymentList =  GetProgramPayments(enrollment.SubscriptionId, enrollment.ProgramId);
+                var subscription =  _programRepository.GetSubscription(enrollment.SubscriptionId);
                 var subscriptionResponse = new ProgramSubscriptionResponseDTO()
                 {
                     Id = subscription.Id,
-                    Name = subscription.Name,
+                    Name = subscription.Title,
                     Description = subscription.Description,
                     IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
                     IsSpecialOffer = subscription.IsSpecialOffer,
                     Duration = subscription.Duration
                 };
-                var program = await _programRepository.GetWorkoutProgram(enrollment.ProgramId);
+                var program =  _programRepository.GetWorkoutProgram(enrollment.ProgramId);
                 var imageList = new List<ProgramImageResponseDTO>();
 
                 foreach (var image in program.Images)
@@ -204,30 +229,9 @@ namespace GymManagementSystem.Services
                 };
             return enrolledProgramList;
         }
-        public async Task<string> AddEnrollment(EnrollmentRequestDTO enrollmentRequest)
+        public async Task<string> DeleteEnrollment(Guid memberId,Guid programId)
         {
-            var subscription = await _programRepository.GetSubscription(enrollmentRequest.SubscriptionId);
-            Enrollment enrollment = new Enrollment()
-            {
-                MemberId = enrollmentRequest.MemberId,
-                ProgramId = enrollmentRequest.ProgramId,
-                SubscriptionId = enrollmentRequest.SubscriptionId,
-                EnrolledDate = DateTime.Now,
-                NextDueDate = DateTime.Now.AddMonths(subscription.Duration)
-            };
-            var data= await _memberRepository.CreateEnrollment(enrollment);
-            if (data is Enrollment)
-            {
-                return "Enrollment Added Successfully";
-            }
-            else
-            {
-                return "Please Try Again";
-            }
-        }
-        public async void DeleteEnrollment(Guid memberId,Guid programId)
-        {
-            var deleteEnrollment=await _memberRepository.GetEnrollments(memberId, programId);
+            var deleteEnrollment= _memberRepository.GetEnrollments(memberId, programId);
             if (deleteEnrollment != null)
             {
                 _memberRepository.DeleteEnrollment(deleteEnrollment);
@@ -236,35 +240,41 @@ namespace GymManagementSystem.Services
             {
                 throw new Exception("Enrollment not found");
             }
+            return "enrollment deleted successfully";
         }
         public async Task<List<ProgramResponseDTO>> GetEnrollablePrograms(Guid memberId)
         {
             List<ProgramResponseDTO> programResponses = new List<ProgramResponseDTO>();
             List<Guid> programIdList = new List<Guid>();
-            var memberEnrollments = await _memberRepository.GetMemberEnrollments(memberId);
+            var memberEnrollments =  _memberRepository.GetMemberEnrollments(memberId);
             foreach(var enrollment in memberEnrollments)
             {
                 programIdList.Add(enrollment.ProgramId);
             }
-            var data=await _memberRepository.NotEnrolledPrograms(programIdList);
+            var data= _memberRepository.NotEnrolledPrograms(programIdList);
             foreach(var program in data)
             {
                 var imageList = new List<ProgramImageResponseDTO>();
                 List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
-                foreach(var subscription in program.Subscriptions)
+                foreach (var programSubscription in program.Subscriptions)
                 {
-                    var programPaymentList = await GetProgramPayments(subscription.Id, program.Id);
-                    var subscriptionResponse = new SubscriptionResponseDTO()
+                    var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
+                    if (subscription != null)
                     {
-                        Id = subscription.Id,
-                        Name = subscription.Name,
-                        Description = subscription.Description,
-                        IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
-                        IsSpecialOffer = subscription.IsSpecialOffer,
-                        Duration = subscription.Duration,
-                        Payments = programPaymentList
-                    };
-                    programSubscriptions.Add(subscriptionResponse);
+
+                        var programPaymentList =  GetProgramPayments(subscription.Id, program.Id);
+                        var subscriptionResponse = new SubscriptionResponseDTO()
+                        {
+                            Id = subscription.Id,
+                            Title = subscription.Title,
+                            Description = subscription.Description,
+                            IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
+                            IsSpecialOffer = subscription.IsSpecialOffer,
+                            Duration = subscription.Duration,
+                            Payments = programPaymentList
+                        };
+                        programSubscriptions.Add(subscriptionResponse);
+                    }
                 }
 
                 foreach (var image in program.Images)
@@ -285,13 +295,16 @@ namespace GymManagementSystem.Services
             }
             return programResponses;
         }
-        public async Task<List<ProgramPaymentResponseDTO>> GetProgramPayments(Guid SubscriptionId, Guid ProgramId)
+        public List<ProgramPaymentResponseDTO> GetProgramPayments(Guid SubscriptionId, Guid ProgramId)
         {
-            var data=await _programRepository.GetSubscription(SubscriptionId);
+            var data= _programRepository.GetSubscription(SubscriptionId);
             var programPaymentList=new List<ProgramPaymentResponseDTO>();
             foreach(var paymentType in data.SubscriptionPayments)
             {
-                var programPayment = await _programRepository.GetProgramPayment(ProgramId, paymentType.Id);
+                var programPayment =  _programRepository.GetProgramPayment(ProgramId, paymentType.Id);
+                if(programPayment != null)
+                {
+
                 ProgramPaymentResponseDTO responseDTO = new ProgramPaymentResponseDTO()
                 {
                     Id = programPayment.Id,
@@ -299,6 +312,7 @@ namespace GymManagementSystem.Services
                     PaymentType = paymentType.PaymentType
                 };
                 programPaymentList.Add(responseDTO);
+                }
             }
             return programPaymentList;
         }

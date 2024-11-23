@@ -15,7 +15,7 @@ namespace GymManagementSystem.Entities
         public bool Status { get; set; } = true;
         public ICollection<ProgramImages>? Images { get; set; }
         public ICollection<ProgramPayment>? ProgramPayments { get; set; }
-        public ICollection<Subscription>? Subscriptions { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }
+        public ICollection<SubscribedProgram>? Subscriptions { get; set; }
     }
 }

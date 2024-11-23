@@ -1,10 +1,11 @@
 ﻿using GymManagementSystem.DBContext;
 using GymManagementSystem.Entities;
+using GymManagementSystem.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace GymManagementSystem.Repositories
 {
-    public class MessageRepository
+    public class MessageRepository: IMessageRepository
     {
         private readonly AppDbContext _context;
 
@@ -12,11 +13,18 @@ namespace GymManagementSystem.Repositories
         {
             _context = context;
         }
-        public AdminMessage CreateUser(AdminMessage user)
+        public AdminMessage AddAdminMessage(AdminMessage message)
         {
-            var data = _context.AdminMessages.Add(user);
+            try
+            {
+
+            var data = _context.AdminMessages.Add(message);
             _context.SaveChanges();
             return data.Entity;
+            }catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
         public async Task<List<AdminMessage>> GetAllAdminMessages()
         {
@@ -37,7 +45,6 @@ namespace GymManagementSystem.Repositories
             }
             return data;
         }
-        //AdminMessage update and delete (soft delete)
         public async Task<AdminMessage> UpdateAdminMessage(AdminMessage member)
         {
             var data = _context.AdminMessages.Update(member);
@@ -46,12 +53,17 @@ namespace GymManagementSystem.Repositories
         }
         public void DeleteAdminMessage(AdminMessage member)
         {
+            if (member is null)
+            {
+                throw new ArgumentNullException(nameof(member));
+            }
+
             _context.AdminMessages.Remove(member);
             _context.SaveChanges();
         }
 
-        //MemberMessageMessage
-        public MemberMessage CreateUser(MemberMessage memberMessage)
+        //MemberMessage
+        public MemberMessage AddMemberMessage(MemberMessage memberMessage)
         {
             var data = _context.MemberMessages.Add(memberMessage);
             _context.SaveChanges();
@@ -69,14 +81,13 @@ namespace GymManagementSystem.Repositories
         }
         public async Task<MemberMessage> GetSingleMessage(Guid id)
         {
-            var data = await _context.MemberMessages.Include(m => m.Member).Where(i => i.Status == true).FirstOrDefaultAsync(i => i.MemberId == id);
+            var data = await _context.MemberMessages.Include(m => m.Member).Where(i => i.Status == true).FirstOrDefaultAsync(i => i.Id == id);
             if (data == null)
             {
                 throw new Exception("MemberMessage is not found");
             }
             return data;
         }
-        //MemberMessage update and delete (soft delete)
         public async Task<MemberMessage> UpdateMemberMessage(MemberMessage memberMessage)
         {
             var data = _context.MemberMessages.Update(memberMessage);
@@ -90,7 +101,7 @@ namespace GymManagementSystem.Repositories
         }
 
         //Visitor Messge
-        public VisitorMessage CreateUser(VisitorMessage visitorMessage)
+        public VisitorMessage AddVisitorMessage(VisitorMessage visitorMessage)
         {
             var data = _context.VisitorMessages.Add(visitorMessage);
             _context.SaveChanges();
@@ -110,7 +121,6 @@ namespace GymManagementSystem.Repositories
             }
             return data;
         }
-        //VisitorMessage update and delete (soft delete)
         public async Task<VisitorMessage> UpdateVisitorMessage(VisitorMessage visitorMessage)
         {
             var data = _context.VisitorMessages.Update(visitorMessage);
