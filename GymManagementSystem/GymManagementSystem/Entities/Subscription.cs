@@ -6,15 +6,16 @@ namespace GymManagementSystem.Entities
     {
         public Guid Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
         public int Duration { get; set; }
+        public DateTime Date { get; set; }
         public bool IsSpecialOffer { get; set; }
         public bool Status { get; set; }
-        public ICollection<WorkoutProgram>? Programs { get; set; }
         public ICollection<SubscriptionPayment>? SubscriptionPayments { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }
+        public ICollection<SubscribedProgram>? SubscribedPrograms { get;set; }
     }
 }

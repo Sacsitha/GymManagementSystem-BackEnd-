@@ -6,7 +6,6 @@ namespace GymManagementSystem.Entities
     {
         public Guid Id { get; set; }
         public DateTime PaymentDate { get; set; }
-        public string Amount { get; set; }
         public Guid MemberId { get; set; }
         public Member Member { get; set; }
         public Guid ProgramPaymentId {  get; set; }
