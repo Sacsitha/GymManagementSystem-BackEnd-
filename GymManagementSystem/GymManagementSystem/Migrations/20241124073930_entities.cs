@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GymManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class Entities : Migration
+    public partial class entities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -205,7 +205,7 @@ namespace GymManagementSystem.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SendDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     MemberId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
@@ -369,7 +369,6 @@ namespace GymManagementSystem.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Amount = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MemberId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProgramPaymentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

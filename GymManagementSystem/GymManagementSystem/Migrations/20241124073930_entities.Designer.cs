@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManagementSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241123161910_Message")]
-    partial class Message
+    [Migration("20241124073930_entities")]
+    partial class entities
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -17,19 +17,6 @@ namespace GymManagementSystem.Services
             _authRepository = authRepository;
             _configuration = configuration;
         }
-        //public async Task<string> Register(UserRequestModel userRequest)
-        //{
-        //    var req = new User
-        //    {
-        //        Name = userRequest.Name,
-        //        Email = userRequest.Email,
-        //        Role = userRequest.Role,
-        //        PasswordHash = BCrypt.Net.BCrypt.HashPassword(userRequest.Password)
-        //    };
-        //    var user = await _authRepository.AddUser(req);
-        //    var token = CreateToken(user);
-        //    return token;
-        //}
 
         public async Task<string> Login(string Id, string password)
         {
@@ -52,6 +39,7 @@ namespace GymManagementSystem.Services
             claimsList.Add(new Claim("Id", user.Id.ToString()));
             claimsList.Add(new Claim("ProfileImage", user.ProfileImage));
             claimsList.Add(new Claim("Roles", user.Roles.ToString()));
+            claimsList.Add(new Claim(ClaimTypes.Role, user.Roles.ToString()));
 
 
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]));
