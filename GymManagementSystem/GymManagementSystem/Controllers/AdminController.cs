@@ -25,7 +25,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.CreateMember (memberRequestDTO);
+                var data = await _memberService.CreateMember (memberRequestDTO);
                 return Ok(data);
             }catch (Exception ex)
             {
@@ -38,7 +38,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.CreateAdmin(adminRequestDTO);
+                var data = await _memberService.CreateAdmin(adminRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.AddEnrollment(enrollment);
+                var data = await _memberService.AddEnrollment(enrollment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.AddProgram(program);
+                var data = await _programService.AddProgram(program);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.AddSubscription(subscription);
+                var data = await _programService.AddSubscription(subscription);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -102,7 +102,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.AddSubscriptionPayment(subId,subscriptionPayment);
+                var data = await _programService.AddSubscriptionPayment(subId,subscriptionPayment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -166,7 +166,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.GetAllMemberDetails();
+                var data =await _memberService.GetAllMemberDetails();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -182,7 +182,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.GetSingleMember(id);
+                var data = await _memberService.GetSingleMember(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -197,7 +197,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetSingleProgram(id);
+                var data = await _programService.GetSingleProgram(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -212,7 +212,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetAllPrograms();
+                var data = await _programService.GetAllPrograms();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -227,7 +227,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetSingleSubscription(id);
+                var data = await _programService.GetSingleSubscription(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -242,7 +242,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetAllSubscriptions();
+                var data = await _programService.GetAllSubscriptions();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -258,7 +258,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.GetMemberEnrolledPrograms(memberId);
+                var data = await _memberService.GetMemberEnrolledPrograms(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -275,7 +275,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.GetEnrollablePrograms(memberId);
+                var data = await _memberService.GetEnrollablePrograms(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -292,7 +292,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.UpdateMember(memberId,memberRequestDTO);
+                var data = await _memberService.UpdateMember(memberId,memberRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -308,7 +308,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.UpdateProgram(Id, programRequestDTO);
+                var data = await _programService.UpdateProgram(Id, programRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -324,7 +324,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.UpdateProgramPayment(Id, Amount);
+                var data = await _programService.UpdateProgramPayment(Id, Amount);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -340,7 +340,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.UpdateSubscription(Id, subscription);
+                var data = await _programService.UpdateSubscription(Id, subscription);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -356,7 +356,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.UpdateSubscriptionPayment(Id, subPayment);
+                var data = await _programService.UpdateSubscriptionPayment(Id, subPayment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -372,7 +372,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.DeleteMember(memberId);
+                var data = await _memberService.DeleteMember(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -388,7 +388,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.DeleteProgram(Id);
+                var data = await _programService.DeleteProgram(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -404,7 +404,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.DeleteSubscription(Id);
+                var data = await _programService.DeleteSubscription(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -419,7 +419,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.DeleteSubscriptionPayment(Id);
+                var data = await _programService.DeleteSubscriptionPayment(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -435,7 +435,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.DeleteSubscribedProgram(subscribeId,programId);
+                var data = await _programService.DeleteSubscribedProgram(subscribeId,programId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -451,7 +451,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.DeleteEnrollment(memberId,programId);
+                var data = await _memberService.DeleteEnrollment(memberId,programId);
                 return Ok(data);
             }
             catch (Exception ex)

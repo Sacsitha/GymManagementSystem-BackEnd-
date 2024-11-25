@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "X:\\Milestone 3\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
+    "X:\\Milestone 3\\BackEnd\\11.25.2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
   },
   "projects": {
-    "X:\\Milestone 3\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
+    "X:\\Milestone 3\\BackEnd\\11.25.2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\Milestone 3\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "projectUniqueName": "X:\\Milestone 3\\BackEnd\\11.25.2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
         "projectName": "GymManagementSystem",
-        "projectPath": "X:\\Milestone 3\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "projectPath": "X:\\Milestone 3\\BackEnd\\11.25.2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
         "packagesPath": "C:\\Users\\ut01410\\.nuget\\packages\\",
-        "outputPath": "X:\\Milestone 3\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
+        "outputPath": "X:\\Milestone 3\\BackEnd\\11.25.2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ut01410\\AppData\\Roaming\\NuGet\\NuGet.Config",
