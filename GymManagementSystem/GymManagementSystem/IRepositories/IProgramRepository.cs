@@ -23,7 +23,7 @@ namespace GymManagementSystem.IRepositories
         List<Subscription> GetAllSubscriptions();
         Subscription UpdateSubscription(Subscription subscription);
         void DeleteSubscription(Subscription subscription);
-        SubscriptionPayment GetSubscriptionPayment(Guid id);
+        SubscriptionPayment GetSubscriptionPayment(Guid id,Guid subId);
         void DeleteSubscriptionPayment(SubscriptionPayment subscriptionPayment);
         List<SubscribedProgram> GetAllSubscribedPrograms();
         SubscribedProgram GetSingleSubscribedProgram(Guid subscribeId, Guid programId);
@@ -32,5 +32,6 @@ namespace GymManagementSystem.IRepositories
         SubscribedProgram UpdateSubscribedProgram(SubscribedProgram subscribedProgram);
         SubscriptionPayment UpdateSubscritionPayment(SubscriptionPayment subscriptionPayment);
         List<SubscriptionPayment> GetSubscriptionAllPayments(Guid id);
+        SubscriptionPayment GetSubscriptionPayment(Guid id);
     }
 }

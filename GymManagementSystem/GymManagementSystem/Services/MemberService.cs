@@ -130,6 +130,32 @@ namespace GymManagementSystem.Services
             };
             return memberResponseDTO;
         }
+        public async Task<MemberResponseDTO> GetMemberByUserId(string id)
+        {
+            var data =await _memberRepository.GetMemberByUserId(id);
+            if (data == null)
+            {
+                throw new Exception("Member not found");
+            }
+            var memberResponseDTO = new MemberResponseDTO()
+            {
+                Id = data.Id,
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                Email = data.Email,
+                DOB = data.DOB,
+                ContactNo = data.ContactNo,
+                Address = data.Address,
+                Age = data.Age,
+                Height = data.Height,
+                Weight = data.Weight,
+                Gender = data.Gender,
+                NicNo = data.NicNo,
+                UserId = data.UserId,
+                ProfileImage = data.User.ProfileImage
+            };
+            return memberResponseDTO;
+        }
         public async Task<string> UpdateMember(Guid Id, MemberRequestDTO memberRequestDTO)
         {
             var data =  _memberRepository.GetMember(Id);

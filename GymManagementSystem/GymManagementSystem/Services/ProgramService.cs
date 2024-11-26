@@ -52,9 +52,10 @@ namespace GymManagementSystem.Services
             {
                 var imageList = new List<ProgramImageResponseDTO>();
                 List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
-                if (program.Subscriptions != null)
+                var subProgramList=_programRepository.GetSubscriptionsOfSingleProgram(program.Id);
+                if (subProgramList != null)
                 {
-                    foreach (var programSubscription in program.Subscriptions)
+                    foreach (var programSubscription in subProgramList)
                     {
                         var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
                         if (subscription != null)
@@ -86,6 +87,7 @@ namespace GymManagementSystem.Services
                     Id = program.Id,
                     Name = program.Name,
                     Description = program.Description,
+                    IsProgramNew = (program.CreatedDate.Year == DateTime.Now.Year &&program.CreatedDate.Month == DateTime.Now.Month)?true :false,
                     Images = imageList,
                     Subscriptions = programSubscriptions
                 };
@@ -196,13 +198,16 @@ namespace GymManagementSystem.Services
             foreach (var paymentType in data.SubscriptionPayments)
             {
                 var programPayment =  _programRepository.GetProgramPayment(ProgramId, paymentType.Id);
-                ProgramPaymentResponseDTO responseDTO = new ProgramPaymentResponseDTO()
+                if (programPayment != null)
                 {
-                    Id = programPayment.Id,
-                    Amount = programPayment.Amount,
-                    PaymentType = paymentType.PaymentType
-                };
-                programPaymentList.Add(responseDTO);
+                    ProgramPaymentResponseDTO responseDTO = new ProgramPaymentResponseDTO()
+                    {
+                        Id = programPayment.Id,
+                        Amount = programPayment.Amount,
+                        PaymentType = paymentType.PaymentType
+                    };
+                    programPaymentList.Add(responseDTO);
+                }
             }
             return programPaymentList;
         }
@@ -317,7 +322,7 @@ namespace GymManagementSystem.Services
             {
                 foreach (var subPayment in subProgram.PaymentRequests)
                 {
-                    var subscriptionPayment = _programRepository.GetSubscriptionPayment(subPayment.SubPaymentId);
+                    var subscriptionPayment = _programRepository.GetSubscriptionPayment(subPayment.SubPaymentId,subProgram.SubscriptionId);
                     if (subscriptionPayment != null)
                     {
                         ProgramPayment payment = new ProgramPayment()
@@ -425,9 +430,10 @@ namespace GymManagementSystem.Services
                 {
                     List<SubPaymentResponseDTO> paymentTypes = new List<SubPaymentResponseDTO>();
                     List<string> Programs = new List<string>();
-                    if(data.SubscribedPrograms != null)
+                    var programList = _programRepository.GetProgramsOfSubscription(data.Id);
+                    if(programList != null)
                     {
-                    foreach (var singleProgram in data.SubscribedPrograms)
+                    foreach (var singleProgram in programList)
                     {
                         var workoutProgram = _programRepository.GetWorkoutProgram(singleProgram.ProgramId);
                         if (workoutProgram != null)

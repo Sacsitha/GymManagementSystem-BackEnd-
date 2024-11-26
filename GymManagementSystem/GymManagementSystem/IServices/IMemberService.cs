@@ -16,6 +16,6 @@ namespace GymManagementSystem.IServices
         Task<string> UpdateMember(Guid Id, MemberRequestDTO memberRequestDTO);
         Task<string> DeleteMember(Guid Id);
         Task<string> DeleteEnrollment(Guid memberId, Guid programId);
-
+        Task<MemberResponseDTO> GetMemberByUserId(string id);
     }
 }
