@@ -1,4 +1,6 @@
-﻿using GymManagementSystem.IServices;
+﻿using GymManagementSystem.DTO.RequestDTO;
+using GymManagementSystem.DTO.Response_DTO;
+using GymManagementSystem.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +30,20 @@ namespace GymManagementSystem.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Authorize]
+        [HttpPost("Login")]
+        public async Task<IActionResult> UserLogin(UserRequestDTO user )
+        {
+            try
+            {
+                var result = await _loginService.LoginUser(user);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        //[Authorize]
         [HttpGet("check")]
         public async Task<IActionResult> CheckAPI()
         {

@@ -69,7 +69,7 @@ namespace GymManagementSystem.Services
             var data = _memberRepository.CreateUser(newUser);
             if (data is User)
             {
-                return "User Added Successfully";
+                return "User Added Successfully"+password;
             }
             else
             {
@@ -282,6 +282,8 @@ namespace GymManagementSystem.Services
             {
                 var imageList = new List<ProgramImageResponseDTO>();
                 List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
+                if(program.Subscriptions != null)
+                {
                 foreach (var programSubscription in program.Subscriptions)
                 {
                     var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
@@ -302,11 +304,15 @@ namespace GymManagementSystem.Services
                         programSubscriptions.Add(subscriptionResponse);
                     }
                 }
-
+                }
+                if (program.Images != null)
+                {
                 foreach (var image in program.Images)
                 {
                     var imageResponseDTO = new ProgramImageResponseDTO(image.ImagePath, image.alternative);
                     imageList.Add(imageResponseDTO);
+                }
+
                 }
                 ProgramResponseDTO response = new ProgramResponseDTO()
                 {

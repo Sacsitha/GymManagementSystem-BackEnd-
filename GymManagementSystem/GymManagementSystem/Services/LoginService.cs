@@ -1,4 +1,6 @@
-﻿using GymManagementSystem.Entities;
+﻿using GymManagementSystem.DTO.RequestDTO;
+using GymManagementSystem.DTO.Response_DTO;
+using GymManagementSystem.Entities;
 using GymManagementSystem.IRepositories;
 using GymManagementSystem.IServices;
 using Microsoft.IdentityModel.Tokens;
@@ -11,11 +13,13 @@ namespace GymManagementSystem.Services
     public class LoginService: ILoginService
     {
         private readonly ILoginRepository _authRepository;
+        private readonly IMemberRepository _memberRepository;
         private readonly IConfiguration _configuration;
-        public LoginService(ILoginRepository authRepository, IConfiguration configuration)
+        public LoginService(ILoginRepository authRepository, IConfiguration configuration, IMemberRepository memberRepository)
         {
             _authRepository = authRepository;
             _configuration = configuration;
+            _memberRepository = memberRepository;
         }
 
         public async Task<string> Login(string Id, string password)
@@ -30,6 +34,33 @@ namespace GymManagementSystem.Services
                 throw new Exception("Wrong password.");
             }
             return CreateToken(user);
+        }
+        public async Task<UserResponseDTO> LoginUser(UserRequestDTO userRequest)
+        {
+            var user = await _authRepository.GetUserById(userRequest.Id);
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+            if (!BCrypt.Net.BCrypt.Verify(userRequest.Password, user.Password))
+            {
+                throw new Exception("Wrong password.");
+            }
+            var Role = "";
+            if (user.Roles == 0)
+            {
+                Role = "Admin";
+            }
+            else
+            {
+                Role = "Member";
+            }
+            UserResponseDTO response = new UserResponseDTO()
+            {
+                UserId = user.Id,
+                Role = Role
+            };
+            return response;
         }
 
 
