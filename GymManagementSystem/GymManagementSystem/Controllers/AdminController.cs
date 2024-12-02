@@ -276,7 +276,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = await _memberService.GetEnrollablePrograms(memberId);
+                var data = await _programService.GetEnrollablePrograms(memberId);
                 return Ok(data);
             }
             catch (Exception ex)

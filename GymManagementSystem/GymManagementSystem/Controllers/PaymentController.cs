@@ -119,6 +119,19 @@ namespace GymManagementSystem.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("Get-Member-All-Payment/{memberId}")]
+        public async Task<IActionResult> GetMemberAllPayment(Guid memberId)
+        {
+            try
+            {
+                var data = await _paymentService.GetMemberAllPayment(memberId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpGet("GetAllSkippedPayment")]
         public async Task<IActionResult> GetAllPaGetAllSkippedPaymentyments()
         {

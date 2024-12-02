@@ -11,6 +11,7 @@ namespace GymManagementSystem.IServices
         Task<List<PaymentResponseDTO>> GetAllPayments();
         Task<List<RefundResponseDTO>> GetAllRefunds();
         Task<List<SkippedPaymentResponseDTO>> GetAllSkippedPayment();
+        Task<List<AllPaymentResponse>> GetMemberAllPayment(Guid id);
         Task<List<PaymentResponseDTO>> GetMemberPayments(Guid memberId);
         Task<List<RefundResponseDTO>> GetMemberRefunds(Guid id);
         Task<List<SkippedPaymentResponseDTO>> GetMemberSkippedPayment(Guid id);

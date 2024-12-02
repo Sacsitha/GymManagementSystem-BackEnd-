@@ -79,6 +79,8 @@ namespace GymManagementSystem
             builder.Services.AddScoped<IPaymentRepository,PaymentRepository>();
             builder.Services.AddScoped<IPaymentService,PaymentService>();
 
+            builder.Services.AddScoped<IReportService,ReportService>();
+
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 

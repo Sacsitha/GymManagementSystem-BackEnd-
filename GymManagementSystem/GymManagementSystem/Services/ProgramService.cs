@@ -3,16 +3,19 @@ using GymManagementSystem.DTO.Response_DTO;
 using GymManagementSystem.Entities;
 using GymManagementSystem.IRepositories;
 using GymManagementSystem.IServices;
+using GymManagementSystem.Repositories;
 
 namespace GymManagementSystem.Services
 {
     public class ProgramService : IProgramService
     {
         private readonly IProgramRepository _programRepository;
+        private readonly IMemberRepository _memberRepository;
 
-        public ProgramService(IProgramRepository programRepository)
+        public ProgramService(IProgramRepository programRepository,IMemberRepository memberRepository)
         {
             _programRepository = programRepository;
+            _memberRepository = memberRepository;
         }
         public async Task<string> AddProgram(ProgramRequestDTO programRequestDTO)
         {
@@ -50,47 +53,7 @@ namespace GymManagementSystem.Services
             var data =  _programRepository.GetAllWorkoutProgram();
             foreach (var program in data)
             {
-                var imageList = new List<ProgramImageResponseDTO>();
-                List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
-                var subProgramList=_programRepository.GetSubscriptionsOfSingleProgram(program.Id);
-                if (subProgramList != null)
-                {
-                    foreach (var programSubscription in subProgramList)
-                    {
-                        var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
-                        if (subscription != null)
-                        {
-
-                            var programPaymentList = await GetProgramPayments(subscription.Id, program.Id);
-                            var subscriptionResponse = new SubscriptionResponseDTO()
-                            {
-                                Id = subscription.Id,
-                                Title = subscription.Title,
-                                Description = subscription.Description,
-                                IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
-                                IsSpecialOffer = subscription.IsSpecialOffer,
-                                Duration = subscription.Duration,
-                                Payments = programPaymentList
-                            };
-                            programSubscriptions.Add(subscriptionResponse);
-                        }
-                    }
-                }
-                foreach (var image in program.Images)
-                {
-                    var imageResponseDTO = new ProgramImageResponseDTO(image.ImagePath, image.alternative);
-                    imageList.Add(imageResponseDTO);
-                }
-                ProgramResponseDTO response = new ProgramResponseDTO()
-                {
-
-                    Id = program.Id,
-                    Name = program.Name,
-                    Description = program.Description,
-                    IsProgramNew = (program.CreatedDate.Year == DateTime.Now.Year &&program.CreatedDate.Month == DateTime.Now.Month)?true :false,
-                    Images = imageList,
-                    Subscriptions = programSubscriptions
-                };
+                var response=await ProgramResponse(program);
                 programResponses.Add(response);
             }
             return programResponses;
@@ -98,42 +61,76 @@ namespace GymManagementSystem.Services
         public async Task<ProgramResponseDTO> GetSingleProgram(Guid Id)
         {
             var data =  _programRepository.GetWorkoutProgram(Id);
+            return await ProgramResponse(data);
+
+        }
+        public async Task<List<ProgramResponseDTO>> GetEnrollablePrograms(Guid memberId)
+        {
+            List<ProgramResponseDTO> programResponses = new List<ProgramResponseDTO>();
+            List<Guid> programIdList = new List<Guid>();
+            var memberEnrollments = _memberRepository.GetMemberEnrollments(memberId);
+            if (memberEnrollments != null)
+            {
+                foreach (var enrollment in memberEnrollments)
+                {
+                    programIdList.Add(enrollment.ProgramId);
+                }
+            }
+            var data = _memberRepository.NotEnrolledPrograms(programIdList);
+            if (data != null)
+            {
+                foreach (var program in data)
+                {
+                    var response = await ProgramResponse(program);
+                    programResponses.Add(response);
+                }
+            }
+            return programResponses;
+        }
+        public async Task<ProgramResponseDTO> ProgramResponse(WorkoutProgram program)
+        {
 
             var imageList = new List<ProgramImageResponseDTO>();
             List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
-            if (data.Subscriptions != null)
+            var subProgramList = _programRepository.GetSubscriptionsOfSingleProgram(program.Id);
+            if (subProgramList != null)
             {
-                foreach (var programSubscription in data.Subscriptions)
+                foreach (var programSubscription in subProgramList)
                 {
                     var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
-                    if(subscription != null)
+                    if (subscription != null)
                     {
 
-                    var programPaymentList = await GetProgramPayments(subscription.Id, data.Id);
-                    var subscriptionResponse = new SubscriptionResponseDTO()
-                    {
-                        Id = subscription.Id,
-                        Title = subscription.Title,
-                        Description = subscription.Description,
-                        IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
-                        IsSpecialOffer = subscription.IsSpecialOffer,
-                        Duration = subscription.Duration,
-                        Payments = programPaymentList
-                    };
-                    programSubscriptions.Add(subscriptionResponse);
+                        var programPaymentList = await GetProgramPayments(subscription.Id, program.Id);
+                        var subscriptionResponse = new SubscriptionResponseDTO()
+                        {
+                            Id = subscription.Id,
+                            Title = subscription.Title,
+                            Description = subscription.Description,
+                            IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
+                            IsSpecialOffer = subscription.IsSpecialOffer,
+                            Duration = subscription.Duration,
+                            Payments = programPaymentList
+                        };
+                        programSubscriptions.Add(subscriptionResponse);
                     }
                 }
             }
-            foreach (var image in data.Images)
+            if (program.Images != null)
             {
-                var imageResponseDTO = new ProgramImageResponseDTO(image.ImagePath, image.alternative);
-                imageList.Add(imageResponseDTO);
+                foreach (var image in program.Images)
+                {
+                    var imageResponseDTO = new ProgramImageResponseDTO(image.ImagePath, image.alternative);
+                    imageList.Add(imageResponseDTO);
+                }
             }
             ProgramResponseDTO response = new ProgramResponseDTO()
             {
-                Id = data.Id,
-                Name = data.Name,
-                Description = data.Description,
+
+                Id = program.Id,
+                Name = program.Name,
+                Description = program.Description,
+                IsProgramNew = (program.CreatedDate.Year == DateTime.Now.Year && program.CreatedDate.Month == DateTime.Now.Month) ? true : false,
                 Images = imageList,
                 Subscriptions = programSubscriptions
             };

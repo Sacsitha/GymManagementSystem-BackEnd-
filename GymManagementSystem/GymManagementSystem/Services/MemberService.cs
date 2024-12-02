@@ -248,6 +248,7 @@ namespace GymManagementSystem.Services
                     Name = program.Name,
                     Description = program.Description,
                     Images = imageList,
+                    NextDueDate = enrollment.NextDueDate,
                     ProgramPayments = programPaymentList,
                     ProgramSubscription = subscriptionResponse
                 };
@@ -267,65 +268,6 @@ namespace GymManagementSystem.Services
                 throw new Exception("Enrollment not found");
             }
             return "enrollment deleted successfully";
-        }
-        public async Task<List<ProgramResponseDTO>> GetEnrollablePrograms(Guid memberId)
-        {
-            List<ProgramResponseDTO> programResponses = new List<ProgramResponseDTO>();
-            List<Guid> programIdList = new List<Guid>();
-            var memberEnrollments =  _memberRepository.GetMemberEnrollments(memberId);
-            foreach(var enrollment in memberEnrollments)
-            {
-                programIdList.Add(enrollment.ProgramId);
-            }
-            var data= _memberRepository.NotEnrolledPrograms(programIdList);
-            foreach(var program in data)
-            {
-                var imageList = new List<ProgramImageResponseDTO>();
-                List<SubscriptionResponseDTO> programSubscriptions = new List<SubscriptionResponseDTO>();
-                if(program.Subscriptions != null)
-                {
-                foreach (var programSubscription in program.Subscriptions)
-                {
-                    var subscription = _programRepository.GetSubscription(programSubscription.SubscribeId);
-                    if (subscription != null)
-                    {
-
-                        var programPaymentList =  GetProgramPayments(subscription.Id, program.Id);
-                        var subscriptionResponse = new SubscriptionResponseDTO()
-                        {
-                            Id = subscription.Id,
-                            Title = subscription.Title,
-                            Description = subscription.Description,
-                            IsNewSubscription = (subscription.Date.Year == DateTime.Now.Year && subscription.Date.Month == DateTime.Now.Month) ? true : false,
-                            IsSpecialOffer = subscription.IsSpecialOffer,
-                            Duration = subscription.Duration,
-                            Payments = programPaymentList
-                        };
-                        programSubscriptions.Add(subscriptionResponse);
-                    }
-                }
-                }
-                if (program.Images != null)
-                {
-                foreach (var image in program.Images)
-                {
-                    var imageResponseDTO = new ProgramImageResponseDTO(image.ImagePath, image.alternative);
-                    imageList.Add(imageResponseDTO);
-                }
-
-                }
-                ProgramResponseDTO response = new ProgramResponseDTO()
-                {
-
-                    Id = program.Id,
-                    Name = program.Name,
-                    Description = program.Description,
-                    Images = imageList,
-                    Subscriptions = programSubscriptions
-                };
-                programResponses.Add(response);
-            }
-            return programResponses;
         }
         public List<ProgramPaymentResponseDTO> GetProgramPayments(Guid SubscriptionId, Guid ProgramId)
         {

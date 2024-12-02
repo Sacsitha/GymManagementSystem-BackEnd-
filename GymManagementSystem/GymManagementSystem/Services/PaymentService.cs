@@ -170,13 +170,14 @@ namespace GymManagementSystem.Services
             if (data == null) { throw new Exception("Data is null"); }
             foreach(SkippedPayment skippedPayment in data)
             {
+                var Program= _programRepository.GetWorkoutProgram(skippedPayment.ProgramId);
                 SkippedPaymentResponseDTO response = new SkippedPaymentResponseDTO()
                 {
                     StartDate = skippedPayment.StartDate,
-                    EndtDate = skippedPayment.EndtDate,
+                    EndDate = skippedPayment.EndtDate,
                     Reason = skippedPayment.Reason,
                     MemberId = skippedPayment.MemberId,
-                    ProgramId = skippedPayment.ProgramId
+                    ProgramName = Program.Name
                 };
                 responseList.Add(response);
             }
@@ -189,17 +190,59 @@ namespace GymManagementSystem.Services
             if (data == null) { throw new Exception("Data is null"); }
             foreach (SkippedPayment skippedPayment in data)
             {
+                var Program = _programRepository.GetWorkoutProgram(skippedPayment.ProgramId);
                 SkippedPaymentResponseDTO response = new SkippedPaymentResponseDTO()
                 {
                     StartDate = skippedPayment.StartDate,
-                    EndtDate = skippedPayment.EndtDate,
+                    EndDate = skippedPayment.EndtDate,
                     Reason = skippedPayment.Reason,
                     MemberId = skippedPayment.MemberId,
-                    ProgramId = skippedPayment.ProgramId
+                    ProgramName = Program.Name
                 };
                 responseList.Add(response);
             }
             return responseList;
+        }
+        public async Task<List<AllPaymentResponse>> GetMemberAllPayment(Guid id)
+        {
+            List<AllPaymentResponse> responseList = new List<AllPaymentResponse>();
+            var data = _paymentRepository.GetMemberRefundPayment(id);
+            if (data == null) { throw new Exception("Data not found"); }
+            foreach (var refund in data)
+            {
+                AllPaymentResponse response = new AllPaymentResponse()
+                {
+                    Date = refund.Date,
+                    Amount = refund.Amount,
+                    MemberId = refund.MemberId,
+                    Reason = refund.Reason,
+                    IsRefund = true,
+                    
+                };
+                responseList.Add(response);
+            }
+            var Pdata = await _paymentRepository.GetMemberPayments(id);
+            if (Pdata == null)
+            {
+                throw new Exception("MemberId is incorrect");
+            }
+            foreach (var payment in Pdata)
+            {
+                var programPayment = _programRepository.GetProgramPayment(payment.ProgramPaymentId);
+                var program = _programRepository.GetWorkoutProgram(programPayment.ProgramId);
+                var subscription = _programRepository.GetSubscriptionPayment(programPayment.SubscriptionPaymentId);
+                AllPaymentResponse response = new AllPaymentResponse()
+                {
+                    MemberId = payment.MemberId,
+                    Date = payment.PaymentDate,
+                    Amount = programPayment.Amount,
+                    Reason = program.Name +" " + subscription.PaymentType,
+                    IsRefund = false,
+                };
+                responseList.Add(response);
+            }
+            var orderedResponseList= responseList.OrderBy(x=>x.Date).ToList();
+            return orderedResponseList;
         }
         public async Task<List<MemberProgramResponseDTO>> GetOverDueMembers()
         {
