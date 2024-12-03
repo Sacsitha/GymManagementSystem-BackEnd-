@@ -19,13 +19,12 @@ namespace GymManagementSystem.Controllers
             _memberService = memberService;
             _programService = programService;
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost("Add-User")]
         public async Task<IActionResult> CreateUser(MemberRequestDTO memberRequestDTO)
         {
             try
             {
-                var data = _memberService.CreateMember (memberRequestDTO);
+                var data = await _memberService.CreateMember (memberRequestDTO);
                 return Ok(data);
             }catch (Exception ex)
             {
@@ -38,7 +37,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _memberService.CreateAdmin(adminRequestDTO);
+                var data = await _memberService.CreateAdmin(adminRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -47,14 +46,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Enrollment")]
         public async Task<IActionResult> CreateEnrollment(EnrollmentRequestDTO enrollment)
         {
             try
             {
-                var data = _memberService.AddEnrollment(enrollment);
+                var data = await _memberService.AddEnrollment(enrollment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -63,14 +61,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Program")]
         public async Task<IActionResult> AddProgram(ProgramRequestDTO program)
         {
             try
             {
-                var data = _programService.AddProgram(program);
+                var data = await _programService.AddProgram(program);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -79,14 +76,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Subscription")]
         public async Task<IActionResult> AddSubscription(SubscriptionRequestDTO subscription)
         {
             try
             {
-                var data = _programService.AddSubscription(subscription);
+                var data = await _programService.AddSubscription(subscription);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -95,14 +91,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Subscription-Payment/{subId}")]
         public async Task<IActionResult> AddSubscriptionPayment(Guid subId,SubscriptionPaymentRequestDTO subscriptionPayment)
         {
             try
             {
-                var data = _programService.AddSubscriptionPayment(subId,subscriptionPayment);
+                var data = await _programService.AddSubscriptionPayment(subId,subscriptionPayment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -111,7 +106,6 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Program-Subscription")]
         public async Task<IActionResult> AddSubscribedProgram(SubscribedProgramRequestDTO subProgram)
@@ -127,7 +121,6 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("Add-Program-Subscription/{subscriptionId}")]
         public async Task<IActionResult> AddSubscribedProgramList(Guid subscriptionId, List<Guid> programIds)
@@ -143,7 +136,6 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpPost("AddProgramPayment")]
         public async Task<IActionResult> AddProgramPayment(ProgramPaymentRequestDTO programPayment)
@@ -159,14 +151,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
         [HttpGet("Get-All-Members")]
         public async Task<IActionResult> GetAllMembers( )
         {
             try
             {
-                var data = _memberService.GetAllMemberDetails();
+                var data =await _memberService.GetAllMemberDetails();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -175,14 +166,26 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member")]
 
-        [HttpGet("Get-Single-Member{id}")]
+        [HttpGet("Get-Single-Member/{id}")]
         public async Task<IActionResult> GetSingleMember(Guid id)
         {
             try
             {
-                var data = _memberService.GetSingleMember(id);
+                var data = await _memberService.GetSingleMember(id);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("Get-Member-By-UserId/{id}")]
+        public async Task<IActionResult> GetMemberByUserId(string id)
+        {
+            try
+            {
+                var data = await _memberService.GetMemberByUserId(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -192,12 +195,12 @@ namespace GymManagementSystem.Controllers
         }
 
 
-        [HttpGet("Get-Single-Program{id}")]
+        [HttpGet("Get-Single-Program/{id}")]
         public async Task<IActionResult> GetSingleProgram(Guid id)
         {
             try
             {
-                var data = _programService.GetSingleProgram(id);
+                var data = await _programService.GetSingleProgram(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -212,7 +215,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetAllPrograms();
+                var data = await _programService.GetAllPrograms();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -222,12 +225,12 @@ namespace GymManagementSystem.Controllers
         }
 
 
-        [HttpGet("GetSingleSubscription{id}")]
+        [HttpGet("GetSingleSubscription/{id}")]
         public async Task<IActionResult> GetSingleSubscription(Guid id)
         {
             try
             {
-                var data = _programService.GetSingleSubscription(id);
+                var data = await _programService.GetSingleSubscription(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -242,7 +245,7 @@ namespace GymManagementSystem.Controllers
         {
             try
             {
-                var data = _programService.GetAllSubscriptions();
+                var data = await _programService.GetAllSubscriptions();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -251,14 +254,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin,Member")]
 
-        [HttpGet("Get-Member-Enrolled-Programs{memberId}")]
+        [HttpGet("Get-Member-Enrolled-Programs/{memberId}")]
         public async Task<IActionResult> GetEnrolledPrograms(Guid memberId)
         {
             try
             {
-                var data = _memberService.GetMemberEnrolledPrograms(memberId);
+                var data = await _memberService.GetMemberEnrolledPrograms(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -268,14 +270,13 @@ namespace GymManagementSystem.Controllers
         }
 
 
-        [Authorize(Roles = "Admin,Member")]
 
-        [HttpGet("Get-Member-Enrollable-Programs{memberId}")]
+        [HttpGet("Get-Member-Enrollable-Programs/{memberId}")]
         public async Task<IActionResult> GetEnrollablePrograms(Guid memberId)
         {
             try
             {
-                var data = _memberService.GetEnrollablePrograms(memberId);
+                var data = await _programService.GetEnrollablePrograms(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -285,14 +286,13 @@ namespace GymManagementSystem.Controllers
         }
 
 
-        [Authorize(Roles = "Admin,Member")]
 
-        [HttpPut("Update-Member{memberId}")]
+        [HttpPut("Update-Member/{memberId}")]
         public async Task<IActionResult> UpdateMember(Guid memberId,MemberRequestDTO memberRequestDTO)
         {
             try
             {
-                var data = _memberService.UpdateMember(memberId,memberRequestDTO);
+                var data = await _memberService.UpdateMember(memberId,memberRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -303,12 +303,12 @@ namespace GymManagementSystem.Controllers
 
         [Authorize(Roles = "Admin")]
 
-        [HttpPut("UpdateProgram{Id}")]
+        [HttpPut("UpdateProgram/{Id}")]
         public async Task<IActionResult> UpdateProgram(Guid Id, ProgramRequestDTO programRequestDTO)
         {
             try
             {
-                var data = _programService.UpdateProgram(Id, programRequestDTO);
+                var data = await _programService.UpdateProgram(Id, programRequestDTO);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -317,14 +317,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpPut("UpdateProgramPayment{Id}")]
+        [HttpPut("UpdateProgramPayment/{Id}")]
         public async Task<IActionResult> UpdateProgramPayment(Guid Id, decimal Amount)
         {
             try
             {
-                var data = _programService.UpdateProgramPayment(Id, Amount);
+                var data = await _programService.UpdateProgramPayment(Id, Amount);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -333,14 +332,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpPut("UpdateSubscription{Id}")]
+        [HttpPut("UpdateSubscription/{Id}")]
         public async Task<IActionResult> UpdateSubscription(Guid Id, SubscriptionRequestDTO subscription)
         {
             try
             {
-                var data = _programService.UpdateSubscription(Id, subscription);
+                var data = await _programService.UpdateSubscription(Id, subscription);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -349,14 +347,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpPut("UpdateSubscriptionPayment{Id}")]
+        [HttpPut("UpdateSubscriptionPayment/{Id}")]
         public async Task<IActionResult> UpdateSubscriptionPayment(Guid Id, SubscriptionPaymentRequestDTO subPayment)
         {
             try
             {
-                var data = _programService.UpdateSubscriptionPayment(Id, subPayment);
+                var data = await _programService.UpdateSubscriptionPayment(Id, subPayment);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -365,14 +362,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpDelete("Delete-Member{memberId}")]
+        [HttpDelete("Delete-Member/{memberId}")]
         public async Task<IActionResult> DeleteMember(Guid memberId)
         {
             try
             {
-                var data = _memberService.DeleteMember(memberId);
+                var data = await _memberService.DeleteMember(memberId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -381,14 +377,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpDelete("DeleteProgram{Id}")]
+        [HttpDelete("DeleteProgram/{Id}")]
         public async Task<IActionResult> DeleteProgram(Guid Id)
         {
             try
             {
-                var data = _programService.DeleteProgram(Id);
+                var data = await _programService.DeleteProgram(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -397,14 +392,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpDelete("DeleteSubscription{Id}")]
+        [HttpDelete("DeleteSubscription/{Id}")]
         public async Task<IActionResult> DeleteSubscription(Guid Id)
         {
             try
             {
-                var data = _programService.DeleteSubscription(Id);
+                var data = await _programService.DeleteSubscription(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -413,13 +407,12 @@ namespace GymManagementSystem.Controllers
             }
         }
         
-        [Authorize(Roles = "Admin")]
-        [HttpDelete("DeleteSubscriptionPayment{Id}")]
+        [HttpDelete("DeleteSubscriptionPayment/{Id}")]
         public async Task<IActionResult> DeleteSubscriptionPayment(Guid Id)
         {
             try
             {
-                var data = _programService.DeleteSubscriptionPayment(Id);
+                var data = await _programService.DeleteSubscriptionPayment(Id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -428,14 +421,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpDelete("DeleteSubscribedProgram{subscribeId},{programId}")]
+        [HttpDelete("DeleteSubscribedProgram/{subscribeId},{programId}")]
         public async Task<IActionResult> DeleteSubscribedProgram(Guid subscribeId, Guid programId)
         {
             try
             {
-                var data = _programService.DeleteSubscribedProgram(subscribeId,programId);
+                var data = await _programService.DeleteSubscribedProgram(subscribeId,programId);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -444,14 +436,13 @@ namespace GymManagementSystem.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
 
-        [HttpDelete("Delete-Enrollment{memberId},{programId}")]
+        [HttpDelete("Delete-Enrollment/{memberId},{programId}")]
         public async Task<IActionResult> DeleteProgram(Guid memberId,Guid programId)
         {
             try
             {
-                var data = _memberService.DeleteEnrollment(memberId,programId);
+                var data = await _memberService.DeleteEnrollment(memberId,programId);
                 return Ok(data);
             }
             catch (Exception ex)

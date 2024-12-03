@@ -29,6 +29,18 @@ namespace GymManagementSystem.Repositories
 
             return data;
         }
+        public async Task<Member> GetMemberByUserId(string id)
+        {
+            var data =await _context.Members
+                .Include(m => m.User)
+                .Where(i => i.MemberStatus == true)
+                .SingleOrDefaultAsync(i => i.UserId == id);
+            if (data == null)
+            {
+                throw new Exception("Member is not found");
+            }
+            return data;
+        }
         public Member GetMember(Guid id)
         {
             var data =  _context.Members

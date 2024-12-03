@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GymManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class entities : Migration
+    public partial class entites : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

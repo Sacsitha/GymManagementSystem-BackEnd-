@@ -79,6 +79,8 @@ namespace GymManagementSystem
             builder.Services.AddScoped<IPaymentRepository,PaymentRepository>();
             builder.Services.AddScoped<IPaymentService,PaymentService>();
 
+            builder.Services.AddScoped<IReportService,ReportService>();
+
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
@@ -95,6 +97,16 @@ namespace GymManagementSystem
                         IssuerSigningKey = new SymmetricSecurityKey(key)
                     };
                 });
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
 
             var app = builder.Build();
 
@@ -104,6 +116,7 @@ namespace GymManagementSystem
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("AllowAllOrigins");
 
             app.UseHttpsRedirection();
 

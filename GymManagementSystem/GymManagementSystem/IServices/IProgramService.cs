@@ -26,5 +26,6 @@ namespace GymManagementSystem.IServices
         Task<List<ProgramResponseDTO>> GetAllPrograms();
         Task<ProgramResponseDTO> GetSingleProgram(Guid Id);
         Task<string> AddProgramPayment(ProgramPaymentRequestDTO programPay);
+        Task<List<ProgramResponseDTO>> GetEnrollablePrograms(Guid memberId);
     }
 }

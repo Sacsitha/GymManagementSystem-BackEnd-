@@ -10,6 +10,7 @@ namespace GymManagementSystem.DTO.Response_DTO
         [Required]
         public string Description { get; set; }
         public List<ProgramImageResponseDTO>? Images { get; set; }
+        public DateTime NextDueDate { get; set; }
         public ProgramSubscriptionResponseDTO ProgramSubscription { get; set; }
         public List<ProgramPaymentResponseDTO>? ProgramPayments { get; set; }
     }

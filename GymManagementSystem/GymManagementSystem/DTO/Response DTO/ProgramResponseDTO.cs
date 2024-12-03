@@ -8,6 +8,7 @@ namespace GymManagementSystem.DTO.Response_DTO
         public string Name { get; set; }
 
         public string Description { get; set; }
+        public bool? IsProgramNew { get; set; }
         public List<ProgramImageResponseDTO>? Images { get; set; }
         public List<SubscriptionResponseDTO>? Subscriptions { get; set; }
     }
