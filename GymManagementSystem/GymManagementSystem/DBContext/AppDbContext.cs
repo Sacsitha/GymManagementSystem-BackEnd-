@@ -25,7 +25,7 @@ namespace GymManagementSystem.DBContext
         public DbSet<VisitorMessage> VisitorMessages { get; set; }
         public DbSet<AdminMessage> AdminMessages { get; set; }
         public DbSet<SubscribedProgram> SubscribedPrograms { get; set; }
-
+        public DbSet<EmailTemplate> EmailTemplates { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Member

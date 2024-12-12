@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
+    "X:\\ProjectDocuments\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
+    "X:\\ProjectDocuments\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "projectUniqueName": "X:\\ProjectDocuments\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
         "projectName": "GymManagementSystem",
-        "projectPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\mumar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
+        "projectPath": "X:\\ProjectDocuments\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\UT02010\\.nuget\\packages\\",
+        "outputPath": "X:\\ProjectDocuments\\BackEnd\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\UT02010\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,6 +49,10 @@
             "BCrypt.Net": {
               "target": "Package",
               "version": "[0.1.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.9.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -96,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

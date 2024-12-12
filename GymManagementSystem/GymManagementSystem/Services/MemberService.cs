@@ -13,13 +13,15 @@ namespace GymManagementSystem.Services
         private readonly IMemberRepository _memberRepository;
         private readonly IProgramRepository _programRepository;
         private readonly IConfiguration _configuration;
+        private readonly SendEmailService _sendEmailService;
 
 
-        public MemberService(IMemberRepository memberRepository, IProgramRepository programRepository , IConfiguration configuration)
+        public MemberService(IMemberRepository memberRepository, IProgramRepository programRepository , IConfiguration configuration, SendEmailService sendEmailService)
         {
             _memberRepository = memberRepository;
             _programRepository = programRepository;
             _configuration = configuration;
+            _sendEmailService = sendEmailService;   
         }
         public async Task<string> CreateAdmin(AdminRequestDTO adminRequestDTO)
         {
@@ -67,6 +69,13 @@ namespace GymManagementSystem.Services
                 }
             };
             var data = _memberRepository.CreateUser(newUser);
+            var mailRequest = new SendMailRequest();
+            mailRequest.Email = memberRequestDTO.Email;
+            mailRequest.User = newUser;
+            mailRequest.Otp = password;
+            mailRequest.Name = "user created";
+            mailRequest.EmailType = Email.None;
+            var result = await _sendEmailService.Sendmail(mailRequest);
             if (data is User)
             {
                 return "User Added Successfully"+password;

@@ -11,6 +11,8 @@ using Microsoft.IdentityModel.Tokens;
 
 using System.Text;
 using Microsoft.OpenApi.Models;
+using GymManagementSystem.Entities;
+using Microsoft.Extensions.Options;
 
 namespace GymManagementSystem
 {
@@ -81,6 +83,24 @@ namespace GymManagementSystem
 
             builder.Services.AddScoped<IReportService,ReportService>();
 
+            // Register EmailConfig
+            builder.Services.Configure<EmailConfig>(builder.Configuration.GetSection("EmailConfig"));
+
+            // Register services
+            builder.Services.AddScoped<SendEmailService>();
+            builder.Services.AddScoped<SendMailRepository>();
+            builder.Services.AddScoped<EmailServiceProvider>();
+
+            // Register DbContext
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Dbconn")));
+
+            // Ensure EmailConfig is available as a singleton if needed
+            builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<EmailConfig>>().Value);
+
+
+
+
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
@@ -107,6 +127,8 @@ namespace GymManagementSystem
                         .AllowAnyMethod();
                     });
             });
+
+
 
             var app = builder.Build();
 
