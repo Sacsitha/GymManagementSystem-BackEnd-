@@ -24,6 +24,24 @@ namespace GymManagementSystem.Repositories
             var data = await _context.Payments.Include(m => m.Member).ToListAsync();
             return data;
         }
+        public async Task<List<Payment>> GetPaymentsByYear(int year)
+        {
+            var payments = await _context.Payments
+                .Where(p => p.PaymentDate.Year == year) 
+                .Include(p=>p.ProgramPayment)
+                .ToListAsync();
+
+            return payments;
+        }
+        public async Task<List<Payment>> GetPaymentsByMonth(int month)
+        {
+            var payments = await _context.Payments
+                .Where(p => p.PaymentDate.Month == month && p.PaymentDate.Year == DateTime.Now.Year) 
+                .Include(p => p.ProgramPayment)
+                .ToListAsync();
+
+            return payments;
+        }
         public async Task<List<Payment>> GetMemberPayments(Guid id)
         {
             var data = await _context.Payments.Include(m => m.Member).Where(i => i.MemberId == id).ToListAsync();
@@ -62,6 +80,13 @@ namespace GymManagementSystem.Repositories
         public List<RefundPayment> GetAllRefundPayments()
         {
             var data =  _context.RefundPayments.Include(m => m.Member).ToList();
+            return data;
+        }
+        public async Task<List<RefundPayment>> GetYearRefundPayments(int year)
+        {
+            var data = _context.RefundPayments
+                               .Where(i => i.Date.Year == year)  
+                               .ToList();  
             return data;
         }
         public RefundPayment GetRefundPayment(Guid id)

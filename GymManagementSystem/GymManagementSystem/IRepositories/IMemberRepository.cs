@@ -17,5 +17,6 @@ namespace GymManagementSystem.IRepositories
         List<WorkoutProgram> NotEnrolledPrograms(List<Guid>? excludeProgramIds);
         Task<List<Enrollment>> GetOverDueEnrollments();
         Task<Member> GetMemberByUserId(string id);
+        List<Enrollment> GetAllProgramEnrollments(Guid Id);
     }
 }

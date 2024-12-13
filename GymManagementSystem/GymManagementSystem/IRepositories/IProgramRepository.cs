@@ -33,5 +33,6 @@ namespace GymManagementSystem.IRepositories
         SubscriptionPayment UpdateSubscritionPayment(SubscriptionPayment subscriptionPayment);
         List<SubscriptionPayment> GetSubscriptionAllPayments(Guid id);
         SubscriptionPayment GetSubscriptionPayment(Guid id);
+        List<SubscriptionPayment> GetSubscriptionAllPayment();
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LZu80RmJ8z4=",
+  "dgSpecHash": "LzlTj80e87s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+  "projectFilePath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mumar\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mumar\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
