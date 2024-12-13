@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
+    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
+    "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
         "projectName": "GymManagementSystem",
-        "projectPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
+        "projectPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\GymManagementSystem.csproj",
         "packagesPath": "C:\\Users\\mumar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\GymManagementSystem-BackEnd-25-11-2024\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
+        "outputPath": "C:\\Users\\mumar\\OneDrive\\Desktop\\MileStone 3\\12-10-24\\GymManagementSystem-BackEnd-\\GymManagementSystem\\GymManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mumar\\AppData\\Roaming\\NuGet\\NuGet.Config",

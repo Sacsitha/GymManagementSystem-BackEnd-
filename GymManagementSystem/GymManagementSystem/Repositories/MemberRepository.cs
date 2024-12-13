@@ -90,7 +90,7 @@ namespace GymManagementSystem.Repositories
         }
         public List<Enrollment> GetAllProgramEnrollments(Guid Id)
         {
-            var data =  _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.ProgramId == Id).ToList();
+            var data =  _context.Enrollments.Include(i => i.Program).Include(p => p.Member).Where(i => i.ProgramId == Id).Where(i=>i.Program.Status==true).ToList();
             return data;
         }
         public List<Enrollment> GetAllEnrollment()

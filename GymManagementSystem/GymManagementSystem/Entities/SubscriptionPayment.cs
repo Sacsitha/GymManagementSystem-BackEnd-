@@ -8,7 +8,7 @@ namespace GymManagementSystem.Entities
         [Required]
         public string PaymentType { get; set; }
         public PaymentDate PaymentDate { get; set; }
-        public bool Status = true;
+        public bool Status {  get; set; }
         public bool UserCanPay { get; set; }
         public Guid SubscriptionId { get; set; }
         public Subscription Subscription { get; set; }

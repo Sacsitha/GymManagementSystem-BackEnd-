@@ -126,6 +126,11 @@ namespace GymManagementSystem.Repositories
             var data = _context.SubscriptionPayments.Include(i => i.Subscription).Where(i => i.Status == true).Where(i => i.SubscriptionId == id).ToList();
             return data;
         }
+        public List<SubscriptionPayment> GetSubscriptionAllPayment()
+        {
+            var data = _context.SubscriptionPayments.Include(i => i.Subscription).Where(i => i.Status == true).ToList();
+            return data;
+        }
         public SubscriptionPayment GetSubscriptionPayment (Guid id,Guid subId)
         {
             var data=_context.SubscriptionPayments.Include(i=>i.Subscription).Where(j=>j.SubscriptionId==subId).FirstOrDefault(i=>i.Id==id);
